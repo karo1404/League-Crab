@@ -3,7 +3,7 @@ import "./App.css";
 import { LanguageProvider } from "./providers/Language";
 import Text from "./components/Text";
 
-const API_KEY = process.env.REACT_APP_RIOT_API_KEY;
+//const API_KEY = process.env.REACT_APP_RIOT_API_KEY;
 
 function App() {
   return (
