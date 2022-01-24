@@ -18,7 +18,7 @@ function App() {
           />
         </header>
         <p>
-          <Text textId="welcomeIn" /> <Text textId="appName" />!
+          <Text textId="welcomeTo" /> <Text textId="appName" />!
         </p>
       </div>
     </LanguageProvider>
