@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
-import { languages, defaultLanguage } from "../languages";
+import { languages, defaultLanguage } from "../../i18n";
+import React from "react";
 
 export const LanguageContext = createContext({
   usedLanguage: defaultLanguage,
