@@ -10,7 +10,7 @@ function App() {
   return (
     <LanguageProvider>
       <div className="App">
-        <div className="container-fluid vh-100 p-0">
+        <div className="container-fluid vh-100">
           <div className="row align-items-center ">
             <div className="col-auto ms-3 mt-3">
               <img
