@@ -1,0 +1,31 @@
+.navbar-container {
+  height: 4rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  font-size: 1.25rem;
+  background-color: var(--primary-dark);
+  z-index: 100;
+}
+
+.logo {
+  height: 4rem !important;
+  padding: 0.5rem;
+  z-index: 2;
+}
+
+.navlinks {
+  color: white;
+  z-index: 1;
+  font-weight: bold;
+}
+
+.navlink {
+  color: white;
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+.navlink:hover {
+  color: var(--secondary);
+}

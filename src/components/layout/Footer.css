@@ -1,0 +1,27 @@
+.footer-container {
+  margin-top: 1rem;
+  padding: 2rem;
+  color: white;
+  background-color: var(--primary-dark);
+  text-align: justify;
+}
+
+.boilerplate {
+  opacity: 0.8;
+}
+
+.email-link {
+  color: white;
+}
+
+.email-link:hover {
+  color: var(--secondary);
+}
+
+/* lg sizing */
+@media (max-width: 992px) {
+  .boilerplate {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}

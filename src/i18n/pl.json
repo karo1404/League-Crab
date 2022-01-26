@@ -1,5 +1,10 @@
 {
     "appName": "League Crab",
     "welcomeTo": "Witaj w",
-    "pageNotFound": "Nie znaleziono strony"
+    "pageNotFound": "Nie znaleziono strony",
+    "legalBoilerplate": "League Crab nie jest wspierany przez Riot Games i nie odzwierciedla poglądów lub opinii Riot Games lub kogokolwiek oficjalnie zaangażowanego w produkcję lub zarządzanie właściwościami Riot Games. Riot Games i wszystkie powiązane własności są znakami towarowymi lub zarejestrowanymi znakami towarowymi Riot Games, Inc.",
+    "contact": "Kontakt",
+    "headerLine1": "Podnieś swoją ",
+    "game": "GRĘ",
+    "headerLine2": "Dzięki League Crab możesz w końcu zrozumieć, co się stało podczas Twojej przygody z League of Legends!"
 }

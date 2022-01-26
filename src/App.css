@@ -1,1 +1,7 @@
+.navbar-row ~ * {
+  margin-top: 4rem !important;
+}
 
+.outlet-row {
+  min-height: 100%;
+}

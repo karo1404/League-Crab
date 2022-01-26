@@ -1,5 +1,10 @@
 {
     "appName": "League Crab",
     "welcomeTo": "Welcome to",
-    "pageNotFound": "Page not found"
+    "pageNotFound": "Page not found",
+    "legalBoilerplate": "League Crab isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.",
+    "contact": "Contact",
+    "headerLine1": "Step up your ",
+    "game": "GAME",
+    "headerLine2": "With League Crab insights you can finally understand what happened during your League of Legends adventure!"
 }
