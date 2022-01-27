@@ -1,17 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Home.css";
 import headerImg from "../../assets/images/Urgot_1.jpg";
 import Text from "../../components/Text";
-import { LanguageContext } from "../../components/providers/Language";
 
 function Home() {
-  //temp shit
-  const { usedLanguage, changeUsedLanguage } = useContext(LanguageContext);
-  const changeLanguageHandler = () => {
-    let languageToSet = usedLanguage === "en" ? "pl" : "en";
-    changeUsedLanguage(languageToSet);
-  };
-
   return (
     <>
       <div className="container">
@@ -39,11 +31,7 @@ function Home() {
 
       <div className="container">
         <div className="row align-items-center justify-content-center">
-          <div className="col text-center">
-            <button className="btn btn-danger" onClick={changeLanguageHandler}>
-              temporary EN / PL
-            </button>
-          </div>
+          <div className="col"></div>
         </div>
       </div>
     </>

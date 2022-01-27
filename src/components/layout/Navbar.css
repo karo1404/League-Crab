@@ -3,8 +3,8 @@
   position: fixed;
   left: 0;
   top: 0;
-  font-size: 1.25rem;
-  background-color: var(--primary-dark);
+
+  background-color: var(--background);
   z-index: 100;
 }
 
@@ -17,13 +17,14 @@
 .navlinks {
   color: white;
   z-index: 1;
-  font-weight: bold;
 }
 
 .navlink {
   color: white;
   opacity: 0.5;
   text-decoration: none;
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
 .navlink:hover {

@@ -1,6 +1,6 @@
 .header-container {
   height: 20rem;
-  background-color: var(--primary-dark);
+  background-color: var(--background);
   color: white;
   position: relative;
 }
@@ -36,7 +36,7 @@
 
 .search-container {
   height: 6rem;
-  background-color: black;
+  background-color: var(--primary);
 }
 
 /* lg sizing */

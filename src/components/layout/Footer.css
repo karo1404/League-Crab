@@ -2,7 +2,7 @@
   margin-top: 1rem;
   padding: 2rem;
   color: white;
-  background-color: var(--primary-dark);
+  background-color: var(--background);
   text-align: justify;
 }
 
@@ -21,6 +21,10 @@
 /* lg sizing */
 @media (max-width: 992px) {
   .boilerplate {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+  .padding-lg-2 {
     padding-left: 2rem !important;
     padding-right: 2rem !important;
   }
