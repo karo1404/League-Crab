@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import headerImg from "../../assets/images/Urgot_1.jpg";
 import Text from "../../components/Text";
+import SearchInput from "../../components/SearchInput";
 
 function Home() {
   return (
@@ -24,8 +25,10 @@ function Home() {
           </div>
         </div>
 
-        <div className="row align-items-center search-container">
-          <div className="col text-center">search a player</div>
+        <div className="row align-items-center justify-content-center search-container">
+          <div className="col-xl-4 col-8">
+            <SearchInput />
+          </div>
         </div>
       </div>
 
