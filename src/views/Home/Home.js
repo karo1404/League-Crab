@@ -3,6 +3,8 @@ import "./Home.css";
 import headerImg from "../../assets/images/Urgot_1.jpg";
 import Text from "../../components/Text";
 import SearchInput from "../../components/SearchInput";
+import ImageSelector from "../../components/ImageSelector";
+import regionOptions from "../../assets/regionSelectorOptions.json";
 
 function Home() {
   return (
@@ -28,6 +30,7 @@ function Home() {
         <div className="row align-items-center justify-content-center search-container">
           <div className="col-xl-4 col-8">
             <SearchInput />
+            <ImageSelector options={regionOptions} />
           </div>
         </div>
       </div>
