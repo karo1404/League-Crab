@@ -3,6 +3,8 @@ import "./Home.css";
 import headerImg from "../../assets/images/Urgot_1.jpg";
 import Text from "../../components/Text";
 import SearchInput from "../../components/SearchInput";
+import InlineDropdown from "../../components/InlineDropdown";
+import regions from "../../assets/json/regions.json";
 
 function Home() {
   return (
@@ -28,6 +30,15 @@ function Home() {
         <div className="row align-items-center justify-content-center search-container">
           <div className="col-xl-4 col-8">
             <SearchInput />
+            Temporary server dropdown (MOM I PROMISE IT WILL LOOK GOOD WITH NEXT
+            COMMIT OK?)
+            <InlineDropdown
+              buttonText="test"
+              dropdownOptions={regions.map((r) => r.short)}
+              selectionCallback={(selIndex) => {
+                console.log(regions[selIndex].long);
+              }}
+            />
           </div>
         </div>
       </div>

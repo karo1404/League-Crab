@@ -3,6 +3,7 @@ import Text from "./Text";
 import "./ImageSelector.css";
 import propTypes from "prop-types";
 
+// options: [{textId, imageUrl}]
 function ImageSelector({ options, selectCallback }) {
   const [selection, setSelection] = useState(0);
 
@@ -14,34 +15,32 @@ function ImageSelector({ options, selectCallback }) {
   return (
     <div className="container-fluid selector-container">
       <div className="row justify-content-around">
-        {options.map((option, index) => {
-          return (
+        {options.map((option, index) => (
+          <div
+            key={option.textId}
+            className="col-auto align-items-center text-center"
+            onClick={(e) => handleSelectionClick(e, option, index)}
+          >
+            <img
+              className={
+                index === selection
+                  ? "selector-image-active selector-image img-fluid"
+                  : "selector-image img-fluid"
+              }
+              src={option.imageUrl}
+              alt="selector"
+            />
             <div
-              key={option.textId}
-              className="col-auto align-items-center text-center"
-              onClick={(e) => handleSelectionClick(e, option, index)}
+              className={
+                index === selection
+                  ? "selector-text-active selector-text"
+                  : "selector-text"
+              }
             >
-              <img
-                className={
-                  index === selection
-                    ? "selector-image-active selector-image img-fluid"
-                    : "selector-image img-fluid"
-                }
-                src={option.imageUrl}
-                alt="selector"
-              />
-              <div
-                className={
-                  index === selection
-                    ? "selector-text-active selector-text"
-                    : "selector-text"
-                }
-              >
-                <Text textId={option.textId} />
-              </div>
+              <Text textId={option.textId} />
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );

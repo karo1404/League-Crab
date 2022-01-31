@@ -40,10 +40,6 @@
   padding-bottom: 2rem;
 }
 
-#image-selector {
-  margin-top: 1rem;
-}
-
 /* lg sizing */
 @media (max-width: 992px) {
   .header-text {
