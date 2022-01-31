@@ -1,4 +1,20 @@
 .selector-image {
-  height: 100%;
-  float: left;
+  margin: 0.5vw;
+  max-height: 5rem;
+  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.3));
+  transition: hue-rotate 2s;
+}
+
+.selector-text {
+}
+
+.selector-image-active {
+  /*filter generated with https://codepen.io/sosuke/pen/Pjoqqp*/
+  filter: brightness(0) invert(12%) sepia(80%) saturate(7110%)
+    hue-rotate(337deg) brightness(77%) contrast(97%)
+    drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+.selector-text-active {
+  color: var(--secondary);
 }

@@ -35,8 +35,13 @@
 }
 
 .search-container {
-  height: 6rem;
   background-color: var(--primary);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+#image-selector {
+  margin-top: 1rem;
 }
 
 /* lg sizing */
