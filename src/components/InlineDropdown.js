@@ -3,7 +3,7 @@ import propTypes from "prop-types";
 import "./InlineDropdown.css";
 
 function InlineDropdown({ dropdownOptions, selectionCallback }) {
-  const [selection, setSelection] = useState(0);
+  const [selection, setSelection] = useState(dropdownOptions[0]);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -26,27 +26,32 @@ function InlineDropdown({ dropdownOptions, selectionCallback }) {
     setIsOpen(false);
   };
 
-  const selectItem = (itemIndex) => {
-    setSelection(itemIndex);
+  const selectItem = (item) => {
+    setSelection(item);
     toggleList();
-    selectionCallback(itemIndex);
+    selectionCallback(item);
   };
 
   return (
     <div className="dropdown-wrapper">
       <button
+        type="button"
         className="dropdown-header-button"
         onClick={(e) => handleListOpening(e)}
       >
-        {dropdownOptions[selection]}
+        {selection}
+        <span style={{ float: "right", marginRight: "1.75rem" }}>
+          {isOpen ? "▴" : "▾"}
+        </span>
       </button>
       {isOpen && (
         <div className="dropdown-list text-left">
           {dropdownOptions.map((option, index) => (
             <button
               key={index}
+              type="button"
               className="dropdown-list-button"
-              onClick={() => selectItem(index)}
+              onClick={() => selectItem(option)}
             >
               {option}
             </button>
