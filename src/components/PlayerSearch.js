@@ -6,7 +6,7 @@ import "./PlayerSearch.css";
 import triangleArrow from "../assets/images/triangle-arrow-right.svg";
 
 function PlayerSearch({ regions }) {
-  const [selectedRegion, setSelectedRegion] = useState(regions[0]);
+  const [, setSelectedRegion] = useState(regions[0]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
