@@ -27,15 +27,23 @@ function Home() {
         </div>
 
         <div className="row align-items-center justify-content-center search-container">
-          <div className="col-xl-4 col-8">
-            <PlayerSearch regions={regions} />
+          <div className="col-lg-8 col-xl-4 ">
+            <h5 className="text-center mb-4">
+              <Text textId="enterSummonerName" />
+            </h5>
+            <PlayerSearch regions={regions} submitCallback={(data) => {}} />
+            <div className="mt-3 ms-2">
+              Here some error text if one occurs (ofc nicely formatted)
+            </div>
           </div>
         </div>
       </div>
 
       <div className="container">
         <div className="row align-items-center justify-content-center">
-          <div className="col"></div>
+          <div className="col" style={{ color: "var(--primary)" }}>
+            Here some illustrated cards presenting features
+          </div>
         </div>
       </div>
     </>

@@ -10,5 +10,6 @@
     "summonerName": "Summoner name",
     "europe":"Europe",
     "america":"America",
-    "asia":"Asia"
+    "asia":"Asia",
+    "enterSummonerName":"Enter summoner name and select a server"
 }

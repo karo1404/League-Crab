@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { LanguageContext } from "./providers/Language";
 import "./SearchInput.css";
 import { getText } from "./Text";
+import propTypes from "prop-types";
 
-function SearchInput() {
+function SearchInput({ value, setValue }) {
   const { dictionary } = useContext(LanguageContext);
-  const [inputText, setInputText] = useState("");
 
   const changeHandler = (e) => {
-    setInputText(e.target.value);
+    setValue(e.target.value);
   };
 
   return (
@@ -18,10 +18,15 @@ function SearchInput() {
       type="text"
       autoFocus={true}
       alt="search"
-      value={inputText}
+      value={value}
       onChange={(e) => changeHandler(e)}
     />
   );
 }
+
+SearchInput.propTypes = {
+  value: propTypes.string.isRequired,
+  setValue: propTypes.func.isRequired,
+};
 
 export default SearchInput;

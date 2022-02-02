@@ -3,13 +3,16 @@ import SearchInput from "./SearchInput";
 import InlineDropdown from "./InlineDropdown";
 import propTypes from "prop-types";
 import "./PlayerSearch.css";
-import triangleArrow from "../assets/images/triangle-arrow-right.svg";
+import crabWhite from "../assets/images/crab-white.svg";
 
-function PlayerSearch({ regions }) {
-  const [, setSelectedRegion] = useState(regions[0]);
+function PlayerSearch({ regions, submitCallback }) {
+  const [selectedRegion, setSelectedRegion] = useState(regions[0]);
+  const [summonerName, setSummonerName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    submitCallback({ summonerName, selectedRegion });
+    setSummonerName("");
   };
 
   return (
@@ -17,9 +20,12 @@ function PlayerSearch({ regions }) {
       <div className="container-fluid">
         <div className="row align-items-center search-field-background">
           <div className="col">
-            <SearchInput />
+            <SearchInput
+              value={summonerName}
+              setValue={(val) => setSummonerName(val)}
+            />
           </div>
-          <div className="col-auto g-0">
+          <div className="col-auto white-pixels-fix g-0">
             <InlineDropdown
               dropdownOptions={regions.map((r) => r.short)}
               selectionCallback={(sel) => {
@@ -27,13 +33,13 @@ function PlayerSearch({ regions }) {
               }}
             />
           </div>
-          <div className="col-auto g-0">
+          <div className="col-auto white-pixels-fix g-0 ">
             <button
               className="submit-button"
               type="submit"
               onClick={(e) => handleSubmit(e)}
             >
-              <img src={triangleArrow} draggable={false} alt="triangle arrow" />
+              <img src={crabWhite} draggable={false} alt="crab" />
             </button>
           </div>
         </div>
@@ -44,6 +50,7 @@ function PlayerSearch({ regions }) {
 
 PlayerSearch.propTypes = {
   regions: propTypes.array.isRequired,
+  submitCallback: propTypes.func,
 };
 
 export default PlayerSearch;

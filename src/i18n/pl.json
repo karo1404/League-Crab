@@ -10,5 +10,6 @@
     "summonerName": "Nazwa przywoływacza",
     "europe":"Europa",
     "america":"Ameryka",
-    "asia":"Azja"
+    "asia":"Azja",
+    "enterSummonerName":"Wpisz nazwę przywoływacza oraz wybierz serwer"
 }
