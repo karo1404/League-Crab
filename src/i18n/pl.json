@@ -11,5 +11,11 @@
     "europe":"Europa",
     "america":"Ameryka",
     "asia":"Azja",
-    "enterSummonerName":"Wpisz nazwę przywoływacza oraz wybierz serwer"
+    "enterSummonerName":"Wpisz nazwę przywoływacza oraz wybierz serwer",
+    "feature1Header": "Funkcja 1",
+    "feature1Text": "Funkcja 1 czyni Cię świetnym!",
+    "feature2Header": "Funkcja 2",
+    "feature2Text": "Funkcja 2 czyni Cię fajnym!",
+    "feature3Header": "Funkcja 3",
+    "feature3Text": "Funkcja 3 czyni Cię słodkim!"
 }

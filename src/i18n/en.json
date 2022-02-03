@@ -11,5 +11,11 @@
     "europe":"Europe",
     "america":"America",
     "asia":"Asia",
-    "enterSummonerName":"Enter summoner name and select a server"
+    "enterSummonerName":"Enter summoner name and select a server",
+    "feature1Header": "Feature 1",
+    "feature1Text": "Feature 1 allows you to be awesome!",
+    "feature2Header": "Feature 2",
+    "feature2Text": "Feature 2 allows you to be cool!",
+    "feature3Header": "Feature 3",
+    "feature3Text": "Feature 3 allows you to be sweet!"
 }
