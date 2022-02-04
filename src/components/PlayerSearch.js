@@ -4,8 +4,9 @@ import InlineDropdown from "./InlineDropdown";
 import propTypes from "prop-types";
 import "./PlayerSearch.css";
 import crabWhite from "../assets/images/crab-white.svg";
+import loading from "../assets/images/loading-icon.svg";
 
-function PlayerSearch({ regions, submitCallback }) {
+function PlayerSearch({ regions, submitCallback, isLoading }) {
   const [selectedRegion, setSelectedRegion] = useState(regions[0]);
   const [summonerName, setSummonerName] = useState("");
 
@@ -39,7 +40,11 @@ function PlayerSearch({ regions, submitCallback }) {
               type="submit"
               onClick={(e) => handleSubmit(e)}
             >
-              <img src={crabWhite} draggable={false} alt="crab" />
+              <img
+                src={isLoading ? loading : crabWhite}
+                draggable={false}
+                alt="crab"
+              />
             </button>
           </div>
         </div>
@@ -51,6 +56,7 @@ function PlayerSearch({ regions, submitCallback }) {
 PlayerSearch.propTypes = {
   regions: propTypes.array.isRequired,
   submitCallback: propTypes.func,
+  isLoading: propTypes.bool,
 };
 
 export default PlayerSearch;

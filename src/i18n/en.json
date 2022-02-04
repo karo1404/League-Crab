@@ -17,5 +17,7 @@
     "feature2Header": "Feature 2",
     "feature2Text": "Feature 2 allows you to be cool!",
     "feature3Header": "Feature 3",
-    "feature3Text": "Feature 3 allows you to be sweet!"
+    "feature3Text": "Feature 3 allows you to be sweet!",
+    "searchErrorNameEmpty": "Summoner name shouldn't be empty.",
+    "searchErrorRegionEmpty": "Serwer should be selected."
 }

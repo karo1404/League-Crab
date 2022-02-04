@@ -28,8 +28,8 @@ function HomePageFeatureCards() {
       <div className="row g-0 justify-content-center">
         <div className="col-xl-8 g-0">
           <div className="row">
-            {featureShowcaseCards.map((card) => (
-              <div className="col-lg-4">
+            {featureShowcaseCards.map((card, index) => (
+              <div key={index} className="col-lg-4">
                 <Card
                   image={card.image}
                   header={card.headerId}
