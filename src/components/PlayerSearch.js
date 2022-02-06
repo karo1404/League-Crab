@@ -43,7 +43,7 @@ function PlayerSearch({ regions, submitCallback, isLoading }) {
               <img
                 src={isLoading ? loading : crabWhite}
                 draggable={false}
-                alt="crab"
+                alt=""
               />
             </button>
           </div>

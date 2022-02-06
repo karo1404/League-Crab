@@ -8,6 +8,7 @@ import Footer from "./components/layout/Footer";
 //const API_KEY = process.env.REACT_APP_RIOT_API_KEY;
 
 function App() {
+  console.log(process.env.REACT_APP_TEST_BUILD_VARABLE);
   return (
     <LanguageProvider>
       <div className="App">
