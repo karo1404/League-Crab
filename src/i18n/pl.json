@@ -19,5 +19,7 @@
     "feature3Header": "Funkcja 3",
     "feature3Text": "Funkcja 3 czyni Cię słodkim!",
     "searchErrorNameEmpty": "Nazwa przywoływacza nie powinna być pusta.",
-    "searchErrorRegionEmpty": "Serwer powinien być wybrany."
+    "searchErrorRegionEmpty": "Serwer powinien być wybrany.",
+    "searchErrorNameNotFound": "Nie znaleziono przywoływacza, sprawdź pisownię oraz wybrany serwer.",
+    "searchErrorSomethingWentWrong": "Coś poszło nie tak. Spróbuj ponownie później."
 }

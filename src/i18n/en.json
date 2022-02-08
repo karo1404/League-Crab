@@ -19,5 +19,7 @@
     "feature3Header": "Feature 3",
     "feature3Text": "Feature 3 allows you to be sweet!",
     "searchErrorNameEmpty": "Summoner name shouldn't be empty.",
-    "searchErrorRegionEmpty": "Serwer should be selected."
+    "searchErrorRegionEmpty": "Server should be selected.",
+    "searchErrorNameNotFound": "Summoner not found, check your spelling and selected server.",
+    "searchErrorSomethingWentWrong": "Something went wrong. Please try again later."
 }

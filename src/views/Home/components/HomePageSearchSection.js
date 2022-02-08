@@ -3,27 +3,45 @@ import Text from "../../../components/Text";
 import regions from "../../../assets/json/regions.json";
 import PlayerSearch from "../../../components/PlayerSearch";
 import { ApiContext } from "../../../components/providers/DataProvider";
+import "./HomePageSearchSection.css";
+import { useNavigate } from "react-router-dom";
 
 //Dictionary with error name and textId
 const errorMessage = {
   nameEmpty: "searchErrorNameEmpty",
   regionEmpty: "searchErrorRegionEmpty",
+  nameNotFound: "searchErrorNameNotFound",
+  other: "searchErrorSomethingWentWrong",
 };
 
 function HomePageSearchSection() {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const { getSummonerByName } = useContext(ApiContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (formData) => {
-    const formValidated = validateForm(formData);
-    setIsLoading(formValidated);
+    if (validateForm(formData)) {
+      setIsLoading(true);
 
-    const { summonerName, selectedRegion } = formData;
-    getSummonerByName(summonerName, selectedRegion.region).then((result) => {
-      console.log(result);
-      setIsLoading((prev) => false);
-    });
+      const { summonerName, selectedRegion } = formData;
+      getSummonerByName(summonerName, selectedRegion.region).then((data) => {
+        if (data.error) {
+          switch (data.error) {
+            case 404:
+              setErrors([errorMessage.nameNotFound]);
+              break;
+            default:
+              setErrors([errorMessage.other]);
+              break;
+          }
+        } else {
+          console.log(data.result);
+          navigate(`/Player/${data.result.name}`, { replace: true });
+        }
+        setIsLoading((prev) => false);
+      });
+    }
   };
 
   const validateForm = ({ summonerName, selectedRegion }) => {
@@ -52,7 +70,7 @@ function HomePageSearchSection() {
       />
       {errors &&
         errors.map((errorMsg) => (
-          <div key={errorMsg} className="mt-3 ms-3">
+          <div key={errorMsg} className="mt-3 ms-3 error-msg">
             <Text textId={errorMsg} />
           </div>
         ))}
