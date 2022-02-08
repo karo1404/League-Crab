@@ -1,0 +1,5 @@
+{
+    "SummonerByName": "/lol/summoner/v4/summoners/by-name/{summonerName}",
+    "ListOfMatchIdsByPuuid": "/lol/match/v5/matches/by-puuid/{puuid}/ids",
+    "MatchByMatchId": "/lol/match/v5/matches/{matchId}"
+}

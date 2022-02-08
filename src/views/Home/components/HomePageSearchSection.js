@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Text from "../../../components/Text";
 import regions from "../../../assets/json/regions.json";
 import PlayerSearch from "../../../components/PlayerSearch";
+import { ApiContext } from "../../../components/providers/DataProvider";
 
 //Dictionary with error name and textId
 const errorMessage = {
@@ -12,14 +13,20 @@ const errorMessage = {
 function HomePageSearchSection() {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
+  const { getSummonerByName } = useContext(ApiContext);
 
   const handleSubmit = (formData) => {
     const formValidated = validateForm(formData);
     setIsLoading(formValidated);
+
+    const { summonerName, selectedRegion } = formData;
+    getSummonerByName(summonerName, selectedRegion.region).then((result) => {
+      console.log(result);
+      setIsLoading((prev) => false);
+    });
   };
 
-  const validateForm = (formData) => {
-    const { summonerName, selectedRegion } = formData;
+  const validateForm = ({ summonerName, selectedRegion }) => {
     const detectedErrors = [];
 
     if (!summonerName) {

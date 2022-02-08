@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { LanguageContext } from "./providers/Language";
+import { LanguageContext } from "./providers/LanguageProvider";
 
 // returns localized text based on Id
 const Text = ({ textId }) => {

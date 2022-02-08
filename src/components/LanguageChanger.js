@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { LanguageContext } from "./providers/Language";
+import { LanguageContext } from "./providers/LanguageProvider";
 import { languageOptions } from "../i18n";
 import "./LanguageChanger.css";
 
