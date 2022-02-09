@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import Text from "../../../components/Text";
-import regions from "../../../assets/json/regions.json";
+
 import PlayerSearch from "../../../components/PlayerSearch";
 import { ApiContext } from "../../../components/providers/DataProvider";
 import "./HomePageSearchSection.css";
@@ -21,6 +21,7 @@ function HomePageSearchSection() {
   const navigate = useNavigate();
 
   const handleSubmit = (formData) => {
+    console.log(formData);
     if (validateForm(formData)) {
       setIsLoading(true);
 
@@ -64,7 +65,6 @@ function HomePageSearchSection() {
         <Text textId="enterSummonerName" />
       </h5>
       <PlayerSearch
-        regions={regions}
         submitCallback={(formData) => handleSubmit(formData)}
         isLoading={isLoading}
       />

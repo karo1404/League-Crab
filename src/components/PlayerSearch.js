@@ -5,8 +5,9 @@ import propTypes from "prop-types";
 import "./PlayerSearch.css";
 import crabWhite from "../assets/images/crab-white.svg";
 import loading from "../assets/images/loading-icon.svg";
+import regions from "../assets/json/regions.json";
 
-function PlayerSearch({ regions, submitCallback, isLoading }) {
+function PlayerSearch({ submitCallback, isLoading }) {
   const [selectedRegion, setSelectedRegion] = useState(regions[0]);
   const [summonerName, setSummonerName] = useState("");
 
@@ -29,8 +30,8 @@ function PlayerSearch({ regions, submitCallback, isLoading }) {
           <div className="col-auto white-pixels-fix g-0">
             <InlineDropdown
               dropdownOptions={regions.map((r) => r.short)}
-              selectionCallback={(sel) => {
-                setSelectedRegion(sel);
+              selectionCallback={(sel, index) => {
+                setSelectedRegion(regions[index]);
               }}
             />
           </div>
@@ -54,7 +55,6 @@ function PlayerSearch({ regions, submitCallback, isLoading }) {
 }
 
 PlayerSearch.propTypes = {
-  regions: propTypes.array.isRequired,
   submitCallback: propTypes.func,
   isLoading: propTypes.bool,
 };

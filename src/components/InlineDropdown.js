@@ -26,10 +26,10 @@ function InlineDropdown({ dropdownOptions, selectionCallback }) {
     setIsOpen(false);
   };
 
-  const selectItem = (item) => {
+  const selectItem = (item, index) => {
     setSelection(item);
     toggleList();
-    selectionCallback(item);
+    selectionCallback(item, index);
   };
 
   return (
@@ -51,7 +51,7 @@ function InlineDropdown({ dropdownOptions, selectionCallback }) {
               key={index}
               type="button"
               className="dropdown-list-button"
-              onClick={() => selectItem(option)}
+              onClick={() => selectItem(option, index)}
             >
               {option}
             </button>
