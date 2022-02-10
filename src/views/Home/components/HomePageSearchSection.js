@@ -21,7 +21,6 @@ function HomePageSearchSection() {
   const navigate = useNavigate();
 
   const handleSubmit = (formData) => {
-    console.log(formData);
     if (validateForm(formData)) {
       setIsLoading(true);
 
@@ -37,11 +36,11 @@ function HomePageSearchSection() {
               break;
           }
         } else {
-          console.log(data.result);
           navigate(`/Player/${data.result.name}`, { replace: true });
         }
-        setIsLoading((prev) => false);
       });
+    } else {
+      setIsLoading((prev) => false);
     }
   };
 

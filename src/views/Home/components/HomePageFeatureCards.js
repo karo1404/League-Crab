@@ -4,19 +4,19 @@ import Card from "../../../components/Card";
 const featureShowcaseCards = [
   {
     image:
-      "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Fiora_5.jpg",
+      "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Fiora_5.jpg",
     headerId: "feature1Header",
     textId: "feature1Text",
   },
   {
     image:
-      "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Seraphine_4.jpg",
+      "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Seraphine_4.jpg",
     headerId: "feature2Header",
     textId: "feature2Text",
   },
   {
     image:
-      "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lulu_1.jpg",
+      "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lulu_1.jpg",
     headerId: "feature3Header",
     textId: "feature3Text",
   },
