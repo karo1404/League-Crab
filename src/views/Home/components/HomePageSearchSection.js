@@ -5,6 +5,7 @@ import PlayerSearch from "../../../components/PlayerSearch";
 import { ApiContext } from "../../../components/providers/DataProvider";
 import "./HomePageSearchSection.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 //Dictionary with error name and textId
 const errorMessage = {
@@ -19,6 +20,7 @@ function HomePageSearchSection() {
   const [errors, setErrors] = useState([]);
   const { getSummonerByName } = useContext(ApiContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (formData) => {
     if (validateForm(formData)) {
@@ -35,7 +37,9 @@ function HomePageSearchSection() {
               setErrors([errorMessage.other]);
               break;
           }
+          setIsLoading((prev) => false);
         } else {
+          dispatch({ type: "summoners/add", payload: data.result });
           navigate(`/Player/${data.result.name}`, { replace: true });
         }
       });
