@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import logo from "../../assets/images/crab-logo-white.svg";
+import logo from "../../assets/images/crab-logo-white.png";
 import { Link } from "react-router-dom";
 import LanguageChanger from "../LanguageChanger";
 
@@ -11,7 +11,7 @@ function Navbar() {
         <div className="col-lg-2"></div>
         <div className="col-2">
           <Link to="/">
-            <img src={logo} className="logo" alt="logo" />
+            <img src={logo} className="logo" alt="logo" draggable="false" />
           </Link>
         </div>
         <div className="col">
