@@ -3,8 +3,8 @@ import matchesReducer from "./reducers/matchesReducer";
 import summonersReducer from "./reducers/summonersReducer";
 
 const rootReducer = combineReducers({
-  Summoners: summonersReducer,
-  Matches: matchesReducer,
+  summoners: summonersReducer,
+  matches: matchesReducer,
 });
 
 const store = createStore(rootReducer);
