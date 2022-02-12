@@ -46,8 +46,7 @@ function PlayerSearchSection() {
           navigate(
             `/summoner/${selectedRegion.short.toLowerCase()}/${
               data.result.name
-            }/`,
-            { replace: true }
+            }/`
           );
         }
       });

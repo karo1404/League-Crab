@@ -7,43 +7,46 @@ import { useNavigate, useParams } from "react-router-dom";
 import { findRegionFromName } from "../../components/helpers/findRegionFromName";
 
 function Summoner() {
-  const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
+  const newSummoner = useSelector((state) => {
+    state.summoners.find((sum) => sum.name === params.name);
+  });
+  const [summoner, setSummoner] = useState(newSummoner);
   const { getSummonerByName } = useContext(ApiContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const summoner = useSelector((state) => {
-    state.summoners.find((sum) => sum.name === params.name);
-  });
 
   useEffect(() => {
+    // validate if URL region is legit
     const serverObject = findRegionFromName(params.server);
     if (!serverObject || !params.server || !params.name) {
       navigate(`/`, {
         replace: true,
       });
     } else if (!summoner) {
+      // name doesn't exist in store - fetch it
       getSummonerByName(params.name, serverObject.region).then((data) => {
         if (data.error) {
-          navigate(`/`, { replace: true });
+          navigate(`/summonerNotFound`, { replace: true });
         } else {
-          dispatch({
+          const { payload } = dispatch({
             type: "summoners/add",
             payload: { ...data.result, region: serverObject },
           });
-          //TODO: fix that thingy
+          setSummoner(payload);
         }
       });
-    } else {
-      setIsLoading(false);
+    } else if (summoner.name.toLowerCase() !== params.name.toLowerCase()) {
+      setSummoner(newSummoner);
     }
   }, [
     dispatch,
-    getSummonerByName,
     navigate,
+    getSummonerByName,
+    newSummoner,
+    summoner,
     params.name,
     params.server,
-    summoner,
   ]);
 
   return (
@@ -55,7 +58,7 @@ function Summoner() {
           </div>
         </div>
         <div className="row">
-          {isLoading || <SummonerPageSummaryHeader summoner={summoner} />}
+          {summoner && <SummonerPageSummaryHeader summoner={summoner} />}
         </div>
       </div>
     </>

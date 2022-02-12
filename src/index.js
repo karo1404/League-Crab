@@ -4,6 +4,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router";
 import PageNotFound from "./views/PageNotFound/PageNotFound";
+import SummonerNotFound from "./views/SummonerNotFound/SummonerNotFound";
 import Home from "./views/Home/Home";
 import Summoner from "./views/Summoner/Summoner";
 import { Provider } from "react-redux";
@@ -24,6 +25,7 @@ ReactDOM.render(
               <Route path="summoner">
                 <Route path=":server/:name" element={<Summoner />} />
               </Route>
+              <Route path="summonerNotFound" element={<SummonerNotFound />} />
               <Route path="*" element={<PageNotFound />} />
             </Route>
           </Routes>

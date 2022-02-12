@@ -21,5 +21,6 @@
     "searchErrorNameEmpty": "Nazwa przywoływacza nie powinna być pusta.",
     "searchErrorRegionEmpty": "Serwer powinien być wybrany.",
     "searchErrorNameNotFound": "Nie znaleziono przywoływacza, sprawdź pisownię oraz wybrany serwer.",
-    "searchErrorSomethingWentWrong": "Coś poszło nie tak. Spróbuj ponownie później."
+    "searchErrorSomethingWentWrong": "Coś poszło nie tak. Spróbuj ponownie później.",
+    "summonerNotFound": "Nie znaleziono przywoływacza"
 }
