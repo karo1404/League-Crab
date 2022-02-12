@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
-import Text from "../../../components/Text";
+import Text from "./Text";
 
-import PlayerSearch from "../../../components/PlayerSearch";
-import { ApiContext } from "../../../components/providers/DataProvider";
-import "./HomePageSearchSection.css";
+import PlayerSearch from "./PlayerSearch";
+import { ApiContext } from "./providers/DataProvider";
+import "./PlayerSearchSection.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 //Dictionary with error name and textId
 const errorMessage = {
@@ -14,18 +15,17 @@ const errorMessage = {
   other: "searchErrorSomethingWentWrong",
 };
 
-function HomePageSearchSection() {
+function PlayerSearchSection() {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const { getSummonerByName } = useContext(ApiContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleSubmit = (formData) => {
-    console.log(formData);
-    if (validateForm(formData)) {
+  const handleSubmit = ({ summonerName, selectedRegion }) => {
+    if (validateForm({ summonerName, selectedRegion })) {
       setIsLoading(true);
 
-      const { summonerName, selectedRegion } = formData;
       getSummonerByName(summonerName, selectedRegion.region).then((data) => {
         if (data.error) {
           switch (data.error) {
@@ -36,12 +36,22 @@ function HomePageSearchSection() {
               setErrors([errorMessage.other]);
               break;
           }
+          setIsLoading((prev) => false);
         } else {
-          console.log(data.result);
-          navigate(`/Player/${data.result.name}`, { replace: true });
+          dispatch({
+            type: "summoners/add",
+            payload: { ...data.result, region: selectedRegion },
+          });
+          setIsLoading((prev) => false);
+          navigate(
+            `/summoner/${selectedRegion.short.toLowerCase()}/${
+              data.result.name
+            }/`
+          );
         }
-        setIsLoading((prev) => false);
       });
+    } else {
+      setIsLoading((prev) => false);
     }
   };
 
@@ -61,9 +71,6 @@ function HomePageSearchSection() {
 
   return (
     <>
-      <h5 className="text-center mb-4">
-        <Text textId="enterSummonerName" />
-      </h5>
       <PlayerSearch
         submitCallback={(formData) => handleSubmit(formData)}
         isLoading={isLoading}
@@ -78,4 +85,4 @@ function HomePageSearchSection() {
   );
 }
 
-export default HomePageSearchSection;
+export default PlayerSearchSection;

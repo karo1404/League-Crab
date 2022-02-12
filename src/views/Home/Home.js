@@ -3,7 +3,8 @@ import "./Home.css";
 
 import HomePageFeatureCards from "./components/HomePageFeatureCards";
 import HomePageHeader from "./components/HomePageHeader";
-import HomePageSearchSection from "./components/HomePageSearchSection";
+import PlayerSearchSection from "../../components/PlayerSearchSection";
+import Text from "../../components/Text";
 
 function Home() {
   return (
@@ -16,7 +17,10 @@ function Home() {
         </div>
         <div className="row align-items-center justify-content-center search-container">
           <div className=" col-md-8 col-xl-5 ">
-            <HomePageSearchSection />
+            <h5 className="text-center mb-4">
+              <Text textId="enterSummonerName" />
+            </h5>
+            <PlayerSearchSection />
           </div>
         </div>
       </div>
