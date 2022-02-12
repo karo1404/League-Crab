@@ -44,7 +44,9 @@ function PlayerSearchSection() {
           });
           setIsLoading((prev) => false);
           navigate(
-            `/summoner?name=${data.result.name}&server=${selectedRegion.short}`,
+            `/summoner/${selectedRegion.short.toLowerCase()}/${
+              data.result.name
+            }/`,
             { replace: true }
           );
         }

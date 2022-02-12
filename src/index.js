@@ -22,7 +22,7 @@ ReactDOM.render(
             <Route path="*" element={<App />}>
               <Route index element={<Home />} />
               <Route path="summoner">
-                <Route index element={<Summoner />} />
+                <Route path=":server/:name" element={<Summoner />} />
               </Route>
               <Route path="*" element={<PageNotFound />} />
             </Route>

@@ -1,32 +1,50 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PlayerSearchSection from "../../components/PlayerSearchSection";
 import SummonerPageSummaryHeader from "./components/SummonerPageSummaryHeader";
 import { ApiContext } from "../../components/providers/DataProvider";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { findRegionFromName } from "../../components/helpers/findRegionFromName";
 
 function Summoner() {
   const [isLoading, setIsLoading] = useState(true);
-  const [searchParams] = useSearchParams();
-  const [querySummonerName, querySummonerServer] = [
-    searchParams.get("name"),
-    searchParams.get("server"),
-  ];
+  const params = useParams();
   const { getSummonerByName } = useContext(ApiContext);
-  const summonerObject = useSelector((state) => {
-    return state.summoners.find((sum) => sum.name === querySummonerName);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const summoner = useSelector((state) => {
+    state.summoners.find((sum) => sum.name === params.name);
   });
 
   useEffect(() => {
-    if (!summonerObject) {
-      const server = findRegionFromName(querySummonerServer);
-      //TODO: logic when view is endered by link
-      getSummonerByName(querySummonerName, server).then();
+    const serverObject = findRegionFromName(params.server);
+    if (!serverObject || !params.server || !params.name) {
+      navigate(`/`, {
+        replace: true,
+      });
+    } else if (!summoner) {
+      getSummonerByName(params.name, serverObject.region).then((data) => {
+        if (data.error) {
+          navigate(`/`, { replace: true });
+        } else {
+          dispatch({
+            type: "summoners/add",
+            payload: { ...data.result, region: serverObject },
+          });
+          //TODO: fix that thingy
+        }
+      });
     } else {
       setIsLoading(false);
     }
-  }, []);
+  }, [
+    dispatch,
+    getSummonerByName,
+    navigate,
+    params.name,
+    params.server,
+    summoner,
+  ]);
 
   return (
     <>
@@ -37,7 +55,7 @@ function Summoner() {
           </div>
         </div>
         <div className="row">
-          {isLoading || <SummonerPageSummaryHeader summoner={summonerObject} />}
+          {isLoading || <SummonerPageSummaryHeader summoner={summoner} />}
         </div>
       </div>
     </>
