@@ -5,7 +5,6 @@ import PlayerSearch from "./PlayerSearch";
 import { ApiContext } from "./providers/DataProvider";
 import "./PlayerSearchSection.css";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 //Dictionary with error name and textId
 const errorMessage = {
