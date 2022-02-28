@@ -1,15 +1,21 @@
 import { createContext } from "react";
 import React from "react";
 import paths from "../../assets/json/apiPaths.json";
+import { selectSummonerWithNameAndRegion } from "../../stores/selectors";
 
 export const ApiContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const getSummonerByName = async (name, server) => {
-    const path = paths.SummonerByName.replace("{summonerName}", name);
-    return makeApiRequest(path, null, server, null).then((result) => {
-      return result;
-    });
+    const cachedSummoner = selectSummonerWithNameAndRegion(name, server);
+    if (cachedSummoner) {
+      return { result: cachedSummoner, error: null };
+    } else {
+      const path = paths.SummonerByName.replace("{summonerName}", name);
+      return makeApiRequest(path, null, server, null).then((result) => {
+        return result;
+      });
+    }
   };
 
   const provider = { getSummonerByName };
