@@ -17,9 +17,15 @@ function SummonerPageSummaryHeader({ summoner }) {
           />
         </div>
         <div className="col-8">
-          <h1 className="summoner-name">{summoner.name}</h1>
-          <span className="summoner-level">{summoner.summonerLevel}</span>
-          <p className="summoner-region">{summoner.region.long}</p>
+          <h1 className="summoner-name">
+            {summoner.name ? summoner.name : ""}
+          </h1>
+          <span className="summoner-level">
+            {summoner.summonerLevel ? summoner.summonerLevel : ""}
+          </span>
+          <p className="summoner-region">
+            {summoner.region ? summoner.region.long : ""}
+          </p>
         </div>
       </div>
     </div>

@@ -1,0 +1,46 @@
+[
+    {
+        "region": "EUN1",
+        "routing": "EUROPE"
+    },
+    {
+        "region": "EUW1",
+        "routing": "EUROPE"
+    },
+    {
+        "region": "RU",
+        "routing": "EUROPE"
+    },
+    {
+        "region": "TR1",
+        "routing": "EUROPE"
+    },
+    {
+        "region": "BR1",
+        "routing": "AMERICAS"
+    },
+    {
+        "region": "LA1",
+        "routing": "AMERICAS"
+    },
+    {
+        "region": "LA2",
+        "routing": "AMERICAS"
+    },
+    {
+        "region": "NA1",
+        "routing": "AMERICAS"
+    },
+    {
+        "region": "OC1",
+        "routing": "AMERICAS"
+    },
+    {
+        "region": "JP1",
+        "routing": "ASIA"
+    },
+    {
+        "region": "KR",
+        "routing": "ASIA"
+    }
+]

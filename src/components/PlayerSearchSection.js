@@ -20,7 +20,6 @@ function PlayerSearchSection() {
   const [errors, setErrors] = useState([]);
   const { getSummonerByName } = useContext(ApiContext);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleSubmit = ({ summonerName, selectedRegion }) => {
     if (validateForm({ summonerName, selectedRegion })) {
@@ -38,10 +37,6 @@ function PlayerSearchSection() {
           }
           setIsLoading((prev) => false);
         } else {
-          dispatch({
-            type: "summoners/add",
-            payload: { ...data.result, region: selectedRegion },
-          });
           setIsLoading((prev) => false);
           navigate(
             `/summoner/${selectedRegion.short.toLowerCase()}/${
