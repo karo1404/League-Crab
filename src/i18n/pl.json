@@ -22,5 +22,11 @@
     "searchErrorRegionEmpty": "Serwer powinien być wybrany.",
     "searchErrorNameNotFound": "Nie znaleziono przywoływacza, sprawdź pisownię oraz wybrany serwer.",
     "searchErrorSomethingWentWrong": "Coś poszło nie tak. Spróbuj ponownie później.",
-    "summonerNotFound": "Nie znaleziono przywoływacza"
+    "summonerNotFound": "Nie znaleziono przywoływacza",
+    "basedOnLast": "Bazując na ostatnich",
+    "games": "grach",
+    "winRate": "Proc. wygranych",
+    "surrenderedGames":"Poddane gry",
+    "averageKda":"Średnie statystyki (K/D/A)",
+    "timeSpentDead": "Czas bycia martwym"
 }

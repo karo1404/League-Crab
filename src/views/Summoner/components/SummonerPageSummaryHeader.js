@@ -6,8 +6,8 @@ function SummonerPageSummaryHeader({ summoner }) {
   const iconPath = `https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/${summoner.profileIconId}.png`;
 
   return (
-    <div className="container col-lg-8 mt-4 mb-4">
-      <div className="row align-items-center ">
+    <div className="container-fluid g-2 mb-4">
+      <div className="row align-items-center justify-content-start g-0">
         <div className="col-auto">
           <img
             className="image-fluid summoner-icon"
@@ -16,7 +16,7 @@ function SummonerPageSummaryHeader({ summoner }) {
             alt={"summonerIcon"}
           />
         </div>
-        <div className="col-8">
+        <div className="col summoner-info">
           <h1 className="summoner-name">
             {summoner.name ? summoner.name : ""}
           </h1>

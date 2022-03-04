@@ -22,5 +22,11 @@
     "searchErrorRegionEmpty": "Server should be selected.",
     "searchErrorNameNotFound": "Summoner not found, check your spelling and selected server.",
     "searchErrorSomethingWentWrong": "Something went wrong. Please try again later.",
-    "summonerNotFound": "Summoner not found"
+    "summonerNotFound": "Summoner not found",
+    "basedOnLast": "Based on last",
+    "games": "games",
+    "winRate": "Win rate",
+    "surrenderedGames":"Surrendered games",
+    "averageKda":"Average statistics (K/D/A)",
+    "timeSpentDead": "Total time dead"
 }
