@@ -28,5 +28,7 @@
     "winRate": "Proc. wygranych",
     "surrenderedGames":"Poddane gry",
     "averageKda":"Średnie statystyki (K/D/A)",
-    "timeSpentDead": "Czas bycia martwym"
+    "timeSpentDead": "Czas bycia martwym",
+    "youPlayedWith": "Grali razem z tobą",
+    "youPlayedAgainst": "Grali przeciwko tobie"
 }

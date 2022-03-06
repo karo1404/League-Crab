@@ -28,5 +28,7 @@
     "winRate": "Win rate",
     "surrenderedGames":"Surrendered games",
     "averageKda":"Average statistics (K/D/A)",
-    "timeSpentDead": "Total time dead"
+    "timeSpentDead": "Total time dead",
+    "youPlayedWith": "You played with",
+    "youPlayedAgainst": "You played against"
 }

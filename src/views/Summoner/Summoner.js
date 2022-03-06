@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import PlayerSearchSection from "../../components/PlayerSearchSection";
 import SummonerPageSummaryHeader from "./components/SummonerPageSummaryHeader";
 import { ApiContext } from "../../components/providers/DataProvider";
@@ -7,6 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { findRegionFromName } from "../../components/helpers/findRegionFromName";
 import { selectSummonerWithNameAndRegion } from "../../stores/selectors/summonerSelectors";
 import SummonerPageStats from "./components/SummonerPageStats";
+import LoadingSpinner from "../../components/LoadingSpinner";
+import SummonerPageOtherPlayers from "./components/SummonerPageOtherPlayers";
 
 function Summoner() {
   const [summoner, setSummoner] = useState(null);
@@ -15,7 +16,6 @@ function Summoner() {
     useContext(ApiContext);
   const params = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const NUMBER_OF_MATCHES = Number.parseInt(
     process.env.REACT_APP_NUMBER_OF_MATCHES
   );
@@ -33,7 +33,7 @@ function Summoner() {
 
     getSummonerByName(params.name, serverObject.region).then((data) => {
       if (data.error) {
-        navigate(`/summonerNotFound`, { replace: true });
+        navigate(`/summonerNotFound`);
         return;
       }
 
@@ -60,7 +60,6 @@ function Summoner() {
     });
   }, [
     navigate,
-    dispatch,
     params.name,
     params.server,
     getMatchIdsByPuuid,
@@ -95,12 +94,15 @@ function Summoner() {
           {isSummonerReady() ? (
             <SummonerPageSummaryHeader summoner={summoner} />
           ) : (
-            ""
+            <LoadingSpinner />
           )}
           {isSummonerReady() && isMatchesReady() ? (
-            <SummonerPageStats matches={matches} puuid={summoner.puuid} />
+            <>
+              <SummonerPageStats matches={matches} puuid={summoner.puuid} />
+              <SummonerPageOtherPlayers puuid={summoner.puuid} />
+            </>
           ) : (
-            ""
+            <LoadingSpinner />
           )}
         </div>
       </div>

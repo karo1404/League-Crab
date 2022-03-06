@@ -6,6 +6,10 @@ export function selectSummonerWithNameAndRegion(name, region) {
     .summoners.find((sum) => sum.name === name && sum.region.region === region);
 }
 
+export function selectSummonerWithPuuid(puuid) {
+  return store.getState().summoners.find((sum) => sum.puuid === puuid);
+}
+
 export function selectMatchIdsWithPuuid(puuid, region) {
   const summoner = store
     .getState()

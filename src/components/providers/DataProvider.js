@@ -25,7 +25,11 @@ export const DataProvider = ({ children }) => {
         if (result.result) {
           dispatch({
             type: "summoners/add",
-            payload: { ...result.result, region: findRegionFromName(server) },
+            payload: {
+              ...result.result,
+              crabScore: 0,
+              region: findRegionFromName(server),
+            },
           });
         }
         return result;
