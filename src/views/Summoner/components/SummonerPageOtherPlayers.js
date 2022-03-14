@@ -1,13 +1,18 @@
 import "./SummonerPageOtherPlayers.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { formatStatsObject } from "../../../components/helpers/formatStats";
 import Text from "../../../components/Text";
+import TooltipBubble from "../../../components/TooltipBubble";
 
 function SummonerPageOtherPlayers({ puuid }) {
   const stats = useSelector(
     (state) => state.summoners.find((sum) => sum.puuid === puuid)?.stats
   );
+
+  useEffect(() => {
+    return;
+  });
 
   return (
     <>
@@ -39,6 +44,8 @@ function ChampionBubbles({ players }) {
   const champSquareUrl =
     "https://ddragon.leagueoflegends.com/cdn/12.5.1/img/champion/";
 
+  function handleMouseEnter(e) {}
+
   return (
     <div className="bubbles-container">
       {players &&
@@ -49,6 +56,7 @@ function ChampionBubbles({ players }) {
             alt={player.champ}
             className="bubble"
             title={`${formatStatsObject(player.kda)} ${player.champ}`}
+            onMouseEnter={(e) => handleMouseEnter(e)}
           />
         ))}
     </div>
