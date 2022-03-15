@@ -1,9 +1,10 @@
 import "./SummonerPageOtherPlayers.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { formatStatsObject } from "../../../components/helpers/formatStats";
 import Text from "../../../components/Text";
 import TooltipBubble from "../../../components/TooltipBubble";
+import champion from "../../../assets/json/champion.json";
 
 function SummonerPageOtherPlayers({ puuid }) {
   const stats = useSelector(
@@ -41,24 +42,48 @@ function SummonerPageOtherPlayers({ puuid }) {
 }
 
 function ChampionBubbles({ players }) {
+  const [showTooltipBubbleKey, setShowTooltipBubbleKey] = useState(false);
   const champSquareUrl =
     "https://ddragon.leagueoflegends.com/cdn/12.5.1/img/champion/";
 
-  function handleMouseEnter(e) {}
+  function handleMouseEnter(e, key) {
+    setShowTooltipBubbleKey(key);
+  }
+
+  function handleMouseLeave(e) {
+    setShowTooltipBubbleKey("");
+  }
+
+  function formatChampName(name = "") {
+    return champion.data[name]?.name;
+  }
 
   return (
     <div className="bubbles-container">
       {players &&
-        players.map((player, index) => (
-          <img
-            key={`${player.champ}${index}`}
-            src={`${champSquareUrl}${player.champ}.png`}
-            alt={player.champ}
-            className="bubble"
-            title={`${formatStatsObject(player.kda)} ${player.champ}`}
-            onMouseEnter={(e) => handleMouseEnter(e)}
-          />
-        ))}
+        players.map((player, index) => {
+          const champion =
+            player.champ === "FiddleSticks" ? "Fiddlesticks" : player.champ;
+          return (
+            <span key={`${champion}${index}`}>
+              <img
+                src={`${champSquareUrl}${champion}.png`}
+                alt={player.champ}
+                className="bubble"
+                onMouseEnter={(e) => handleMouseEnter(e, `${champion}${index}`)}
+                onMouseLeave={(e) => handleMouseLeave(e)}
+              />
+              {showTooltipBubbleKey === `${champion}${index}` && (
+                <TooltipBubble
+                  title={`${player.player}`}
+                  content={`${formatStatsObject(player.kda)} ${formatChampName(
+                    champion
+                  )}`}
+                />
+              )}
+            </span>
+          );
+        })}
     </div>
   );
 }

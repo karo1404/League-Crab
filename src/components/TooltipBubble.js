@@ -1,8 +1,13 @@
+import { useEffect, useRef } from "react";
 import "./TooltipBubble.css";
 
-function TooltipBubble({ content, originPosition }) {
+function TooltipBubble({ title, content, originPosition }) {
+  const ref = useRef(null);
+  useEffect(() => {}, []);
+
   return (
-    <div className="tooltip-container">
+    <div ref={ref} className="tooltip-container">
+      <h6>{title}</h6>
       <p>{content}</p>
     </div>
   );

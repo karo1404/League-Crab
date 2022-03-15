@@ -36,6 +36,7 @@ function SummonerPageStats({ matches, puuid }) {
       match.info.participants.forEach((player) => {
         if (player.puuid === currentPlayer.puuid) return;
         const playerObject = {
+          player: player.summonerName,
           champ: player.championName,
           kda: {
             kills: player.kills,
