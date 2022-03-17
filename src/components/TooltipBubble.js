@@ -22,12 +22,6 @@ function TooltipBubble({ title, content, originPosition }) {
         position.x - Math.abs(position.x + dimensions.width - windowSize.width)
       }px`;
     }
-    if (position.y + dimensions.height > windowSize.width) {
-      divRef.current.style.top = `${
-        position.y -
-        Math.abs(position.y + dimensions.height - windowSize.height)
-      }px`;
-    }
     setIsReady(true);
   }, [windowSize]);
 
