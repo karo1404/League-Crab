@@ -3,22 +3,19 @@
 }
 
 .stats-item-container {
-  color: white;
   text-align: center;
+  color: var(--background);
 }
 
 .stats-item-container h6 {
-  margin: 0;
-  color: var(--primary);
+  margin: -0.5rem 0 0 0;
+  color: var(--background-secondary);
   white-space: nowrap;
-  white-space: pre;
+  font-weight: normal;
 }
 
 .stats-item-container p {
-  background-color: var(--primary);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0;
   padding: 0 1rem 0 1rem;
-  font-weight: 300;
-  font-size: 2.5rem;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  font-size: 2rem;
 }

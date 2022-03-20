@@ -4,6 +4,7 @@ import propTypes from "prop-types";
 import Text from "../../../components/Text";
 import { useDispatch } from "react-redux";
 import { formatStats } from "../../../components/helpers/formatStats";
+import getHighestOccurrence from "../../../components/helpers/getHighestOccurrence";
 
 function SummonerPageStats({ matches, puuid }) {
   const [stats, setStats] = useState(null);
@@ -16,6 +17,10 @@ function SummonerPageStats({ matches, puuid }) {
     let timeDead = 0;
     const champions = { ally: [], enemy: [] };
     const individualChampions = [];
+    const teamGold = { playerSum: 0, teamSum: 0 };
+    let stolenObjectives = 0;
+    let visionWardsBought = 0;
+    const playedPositions = [];
 
     matches.forEach((match) => {
       const currentPlayer = match.info.participants.find(
@@ -31,6 +36,10 @@ function SummonerPageStats({ matches, puuid }) {
       kda.assists = kda.assists + currentPlayer.assists;
       individualChampions.push({ champ: currentPlayer.championName, kda });
       timeDead += currentPlayer.totalTimeSpentDead;
+      teamGold.playerSum += currentPlayer.goldEarned;
+      stolenObjectives += currentPlayer.objectivesStolen;
+      visionWardsBought += currentPlayer.visionWardsBoughtInGame;
+      playedPositions.push(currentPlayer.teamPosition);
 
       //stats per player
       match.info.participants.forEach((player) => {
@@ -45,8 +54,11 @@ function SummonerPageStats({ matches, puuid }) {
           },
         };
         if (player.teamId === currentPlayer.teamId) {
+          // allied
           champions.ally.push(playerObject);
+          teamGold.teamSum += player.goldEarned;
         } else {
+          // enemy
           champions.enemy.push(playerObject);
         }
       });
@@ -60,6 +72,10 @@ function SummonerPageStats({ matches, puuid }) {
       assists: kda.assists / matches.length,
       timeDead: timeDead,
       champions,
+      percentageOfTeamGold: teamGold.playerSum / teamGold.teamSum,
+      stolenObjectives,
+      visionWardsBought,
+      favoritePosition: getHighestOccurrence(playedPositions.filter(String)),
     };
     setStats(statsObject);
     dispatch({
@@ -97,12 +113,28 @@ function SummonerPageStats({ matches, puuid }) {
               )}
             />
             <StatisticsItem
+              titleId={"percentageOfTeamGold"}
+              value={`${(stats.percentageOfTeamGold * 100).toFixed(1)}%`}
+            />
+            <StatisticsItem
+              titleId={"favoritePosition"}
+              value={`${stats.favoritePosition}`.substring(0, 3) || "MID"}
+            />
+            <StatisticsItem
+              titleId={"visionWardsBought"}
+              value={`${stats.visionWardsBought}`}
+            />
+            <StatisticsItem
               titleId={"timeSpentDead"}
               value={`${Math.floor(stats.timeDead / 60)
                 .toString()
                 .padStart(2, "0")}:${(Math.floor(stats.timeDead) % 60)
                 .toString()
                 .padStart(2, "0")}`}
+            />
+            <StatisticsItem
+              titleId={"stolenObjectives"}
+              value={`${stats.stolenObjectives}`}
             />
           </div>
         </div>
@@ -121,10 +153,15 @@ SummonerPageStats.propTypes = {
 function StatisticsItem({ titleId, value }) {
   return (
     <div className="col stats-item-container mb-2">
-      <p>{value ? value : ""}</p>
-      <h6>{titleId ? <Text textId={titleId} /> : ""}</h6>
+      <p>{value}</p>
+      <h6>{<Text textId={titleId} />}</h6>
     </div>
   );
 }
+
+StatisticsItem.defaultProps = {
+  titleId: "",
+  value: "",
+};
 
 export default SummonerPageStats;
