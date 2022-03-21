@@ -63,6 +63,7 @@ function Summoner() {
     });
   }, [
     navigate,
+    dispatch,
     params.name,
     params.server,
     getMatchIdsByPuuid,
