@@ -89,13 +89,13 @@ function SummonerPageStats({ matches, puuid }) {
     <div className="stats-container mb-5">
       {stats ? (
         <div className="container-fluid">
-          <div className="row m-0">
-            <h6>
-              <Text textId={"basedOnLast"} />
-              {` ${matches.length} `}
-              <Text textId={"games"} />
-              {":"}
-            </h6>
+          <h6 className="ms-2">
+            <Text textId={"basedOnLast"} />
+            {` ${matches.length} `}
+            <Text textId={"games"} />
+            {":"}
+          </h6>
+          <div className="m-0 stat-items-grid">
             <StatisticsItem
               titleId={"winRate"}
               value={`${(stats.winRatio * 100).toFixed(0)}%`}
@@ -153,7 +153,7 @@ SummonerPageStats.propTypes = {
 
 function StatisticsItem({ titleId, value }) {
   return (
-    <div className="col stats-item-container mb-2">
+    <div className="stats-item-container mb-2">
       <p>{value}</p>
       <h6>{<Text textId={titleId} />}</h6>
     </div>

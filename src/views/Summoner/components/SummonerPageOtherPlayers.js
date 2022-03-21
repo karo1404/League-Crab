@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Text from "../../../components/Text";
 
 import { ChampionBubbles } from "../../../components/ChampionBubbles";
+import OtherPlayersInsights from "./OtherPlayersInsights";
 
 function SummonerPageOtherPlayers({ puuid }) {
   const stats = useSelector(
@@ -24,6 +25,7 @@ function SummonerPageOtherPlayers({ puuid }) {
                 <Text textId={"youPlayedWith"} />
               </h4>
               <ChampionBubbles players={stats.champions.ally} />
+              <OtherPlayersInsights players={stats.champions.ally} />
             </div>
           </div>
           <div className="col-sm mb-3">
@@ -32,6 +34,7 @@ function SummonerPageOtherPlayers({ puuid }) {
                 <Text textId={"youPlayedAgainst"} />
               </h4>
               <ChampionBubbles players={stats.champions.enemy} />
+              <OtherPlayersInsights players={stats.champions.enemy} />
             </div>
           </div>
         </div>
