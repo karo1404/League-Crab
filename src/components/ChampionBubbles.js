@@ -4,8 +4,12 @@ import { formatStatsObject } from "./helpers/formatStats";
 import TooltipBubble from "./TooltipBubble";
 import championJson from "../assets/json/champion.json";
 import propTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import { selectSummonerWithPuuid } from "../stores/selectors/summonerSelectors";
+import { selectCurrentSummonerPuuid } from "../stores/selectors/currentSummonerSelector";
 
 export function ChampionBubbles({ players }) {
+  const navigate = useNavigate();
   const [showTooltipBubbleKey, setShowTooltipBubbleKey] = useState(false);
   const champSquareUrl =
     "https://ddragon.leagueoflegends.com/cdn/12.5.1/img/champion/";
@@ -16,6 +20,13 @@ export function ChampionBubbles({ players }) {
 
   function handleMouseLeave(e) {
     setShowTooltipBubbleKey("");
+  }
+
+  function handleMouseClick(e, playerName) {
+    const currentSummoner = selectSummonerWithPuuid(
+      selectCurrentSummonerPuuid()
+    );
+    navigate(`/summoner/${currentSummoner.region.short}/${playerName}`);
   }
 
   return (
@@ -35,6 +46,7 @@ export function ChampionBubbles({ players }) {
               playerKda={player.kda}
               mouseEnterCallback={handleMouseEnter}
               mouseLeaveCallback={handleMouseLeave}
+              mouseClickCallback={handleMouseClick}
               isTooltipShown={
                 showTooltipBubbleKey === `${champion?.id}${index}`
               }
@@ -57,6 +69,7 @@ export function ChampionBubble({
   playerKda,
   mouseEnterCallback,
   mouseLeaveCallback,
+  mouseClickCallback,
   isTooltipShown,
 }) {
   return (
@@ -69,6 +82,7 @@ export function ChampionBubble({
           mouseEnterCallback && ((e) => mouseEnterCallback(e, bubbleKey))
         }
         onMouseLeave={mouseLeaveCallback && ((e) => mouseLeaveCallback(e))}
+        onClick={(e) => mouseClickCallback(e, playerName)}
       />
       {isTooltipShown && (
         <TooltipBubble

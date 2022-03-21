@@ -8,6 +8,7 @@ import { selectSummonerWithNameAndRegion } from "../../stores/selectors/summoner
 import SummonerPageStats from "./components/SummonerPageStats";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import SummonerPageOtherPlayers from "./components/SummonerPageOtherPlayers";
+import { useDispatch } from "react-redux";
 
 function Summoner() {
   const [summoner, setSummoner] = useState(null);
@@ -16,6 +17,7 @@ function Summoner() {
     useContext(ApiContext);
   const params = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const NUMBER_OF_MATCHES = Number.parseInt(
     process.env.REACT_APP_NUMBER_OF_MATCHES
   );
@@ -45,6 +47,7 @@ function Summoner() {
       ).then((data) => {
         if (data.error) return;
         const matchesIdArray = data.result;
+        dispatch({ type: "currentSummoner/set", payload: newSummoner.puuid });
         setSummoner(
           selectSummonerWithNameAndRegion(newSummoner.name, serverObject.region)
         );
