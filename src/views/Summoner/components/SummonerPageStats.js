@@ -37,6 +37,7 @@ function SummonerPageStats({ matches, puuid }) {
       individualChampions.push({ champ: currentPlayer.championName, kda });
       timeDead += currentPlayer.totalTimeSpentDead;
       teamGold.playerSum += currentPlayer.goldEarned;
+      teamGold.teamSum += currentPlayer.goldEarned;
       stolenObjectives += currentPlayer.objectivesStolen;
       visionWardsBought += currentPlayer.visionWardsBoughtInGame;
       playedPositions.push(currentPlayer.teamPosition);
@@ -118,7 +119,7 @@ function SummonerPageStats({ matches, puuid }) {
             />
             <StatisticsItem
               titleId={"favoritePosition"}
-              value={`${stats.favoritePosition}`.substring(0, 3) || "MID"}
+              value={`${stats.favoritePosition}` || "MIDDLE"}
             />
             <StatisticsItem
               titleId={"visionWardsBought"}
